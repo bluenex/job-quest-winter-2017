@@ -27,5 +27,5 @@ Front-end
 Data
 ---
 - Given [Consumer complaint dataset file](https://data.consumerfinance.gov/api/views/s6ew-h6mp/rows.csv?accessType=DOWNLOAD), Write a python code to load the file and plot the following data
-- X-axis representing year that the compaints have been received (`Date received` column)
+- X-axis representing year that the complaints have been received (`Date received` column)
 - Y-axis representing total complaints count grouped by `Product` column
