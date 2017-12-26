@@ -3,6 +3,9 @@ var app = express();
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 
+// set static
+app.use(express.static(__dirname+'/client/build'))
+
 // middleware
 app.use(bodyParser.json());
 
@@ -110,5 +113,5 @@ app.delete('/api/tasktypes/:_id', function(req, res) {
     });
 });
 
-app.listen(3000);
-console.log('running on port 3000...');
+app.listen(4444);
+console.log('running on port 4444...');
