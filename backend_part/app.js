@@ -4,7 +4,7 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 
 // set static
-app.use(express.static(__dirname+'/client/build'))
+// app.use(express.static(__dirname+'/client/build'))
 
 // middleware
 app.use(bodyParser.json());
@@ -35,7 +35,7 @@ app.get('/api/tasks', function(req, res) {
 // add one task
 app.post('/api/tasks', function(req, res) {
     var task = req.body;
-    console.log(task);
+    console.log(req);
     Task.addTask(task, function(err, task) {
         if(err) {
             throw err;
@@ -113,5 +113,5 @@ app.delete('/api/tasktypes/:_id', function(req, res) {
     });
 });
 
-app.listen(4444);
-console.log('running on port 4444...');
+app.listen(6000);
+console.log('running on port 6000...');

@@ -1,11 +1,21 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import 'semantic-ui-css/semantic.min.css';
+// import logo from './logo.svg';
+
 import './App.css';
 import Fetcher from './components/fetchComponent';
+// import Todo from './components/todoComponent';
+
+
 
 class App extends Component {
   render() {
-    return <Fetcher />;
+    return (
+      <div>
+        <Fetcher />
+        {/* <Todo /> */}
+      </div>
+    );
     // return (
     //   <div className="App">
     //     <header className="App-header">
