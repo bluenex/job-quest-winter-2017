@@ -3,16 +3,16 @@ import 'semantic-ui-css/semantic.min.css';
 // import logo from './logo.svg';
 
 import './App.css';
-import Fetcher from './components/fetchComponent';
+
+// import Fetcher from './components/fetcherComponent';
 // import Todo from './components/todoComponent';
-
-
+import TodoList from './components/todoListComponent';
 
 class App extends Component {
   render() {
     return (
       <div>
-        <Fetcher />
+        <TodoList />
         {/* <Todo /> */}
       </div>
     );

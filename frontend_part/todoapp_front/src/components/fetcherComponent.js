@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import Todo from './todoComponent';
+import Todo from './newTodoComponent';
 import { Checkbox } from 'semantic-ui-react';
 
 // const Fetcher = () => {
