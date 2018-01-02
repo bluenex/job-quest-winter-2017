@@ -2,7 +2,8 @@ import React from 'react';
 import axios from 'axios';
 import { Button, Form, Grid, Header, Checkbox } from 'semantic-ui-react';
 
-import Todo from './newTodoComponent';
+import NewTodo from './newTodoComponent';
+import TodoItem from './todoItemComponent';
 
 class TodoList extends React.Component {
   constructor(props) {
@@ -25,10 +26,10 @@ class TodoList extends React.Component {
         console.log(err);
       });
 
-    // set this to class member
-    const test = this.state.tasks.map(task => (
-      <li key={task._id}><Checkbox checked={task.isActive} label={task.name} /></li>
-    ));
+    // // set this to class member
+    // const test = this.state.tasks.map(task => (
+    //   <li key={task._id}><Checkbox checked={task.isActive} label={task.name} /></li>
+    // ));
   }
 
   handleChange = (e, { name, value }) => {
@@ -42,15 +43,24 @@ class TodoList extends React.Component {
     // console.log("stringify: " + JSON.stringify(newTodo));
 
     axios.post('/api/tasks', JSON.stringify(newTodo), {
-      headers: {'Content-Type': 'application/json'}
+      headers: { 'Content-Type': 'application/json' }
     })
-      .then(this.fetchTasks())
+      .then(
+        this.fetchTasks(),
+        this.setState({ newtodo: { name: '', isActive: true }})
+      )
       .catch((err) => {
         console.log(err);
       });
   }
 
   render() {
+    // set this to class member
+    const test = this.state.tasks.map(task => (
+      // <li key={task._id}><Checkbox checked={task.isActive} label={task.name} /></li>
+      <TodoItem task={task} />
+    ));
+
     return (
       <div className="todoList">
         <style>{`
@@ -76,9 +86,9 @@ class TodoList extends React.Component {
               TODO List
             </Header>
             {/* text area to add new todo */}
-            <Todo onChange={this.handleChange} onSubmit={this.handleSubmit} />
+            <NewTodo todoValue={this.state.newtodo.name} onChange={this.handleChange} onSubmit={this.handleSubmit} />
             <ul>
-              { test }
+              {test}
             </ul>
           </Grid.Column>
 

@@ -1,19 +1,26 @@
 import React from 'react';
 import { Form } from 'semantic-ui-react';
-import PropTypes from 'react-proptypes';
+import PropTypes from 'prop-types';
 
-const Todo = ({ onChange, onSubmit }) => (
-  <Form onSubmit={onSubmit}>
-    <Form.Group widths="equal">
-      <Form.Input name="name" onChange={onChange} placeholder="What to do?" />
-      <Form.Button content="+" />
-    </Form.Group>
-  </Form>
-);
+class NewTodo extends React.Component {
+  render() {
+    const todoVal = this.props.todoValue;
 
-Todo.propTypes = {
+    return (
+      <Form onSubmit={this.props.onSubmit}>
+        <Form.Group widths="equal">
+          <Form.Input name="name" value={todoVal} onChange={this.props.onChange} placeholder="What to do?" />
+          <Form.Button content="+" />
+        </Form.Group>
+      </Form>
+    );
+  }
+}
+
+NewTodo.propTypes = {
+  todoValue: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired,
 };
 
-export default Todo;
+export default NewTodo;
