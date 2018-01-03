@@ -73,6 +73,11 @@ class TodoList extends React.Component {
     this.setState({ filter: newFilterVal });
   }
 
+  handleDeleteButton = (id) => {
+    console.log(id)
+    this.deleteTask(id);
+  }
+
   createNewTask(ntd) {
     axios.post('/api/tasks', JSON.stringify(ntd), {
       headers: { 'Content-Type': 'application/json' }
@@ -100,6 +105,18 @@ class TodoList extends React.Component {
       })
   }
 
+  deleteTask(id) {
+    axios.delete('/api/tasks/' + id, {
+      headers: { 'Content-Type': 'application/json' }
+    })
+      .then(
+      this.fetchTasks()
+      )
+      .catch((err) => {
+        console.log(err);
+      })
+  }
+
   render() {
     // set this to class member
     // const test = this.state.tasks.map(task => (
@@ -114,6 +131,11 @@ class TodoList extends React.Component {
       body > div > div,
       body > div > div > div.todoList {
         height: 100%;
+      }
+
+      body > div > div.conf {
+        height: auto;
+        width: 150px;
       }
     `}
         </style>
@@ -141,19 +163,24 @@ class TodoList extends React.Component {
             <Table singleLine>
               <Table.Body>
                 {/* normal function wont be able to see this.state, go arrow! */}
-              {this.state.tasks.filter((el) => {
-                // console.log(this.state);
-                if(this.state.filter === 'active') {
-                  return el.isActive === true;
-                } else if(this.state.filter === 'done') {
-                  return el.isActive === false;
-                } else {
-                  return el;
-                }
-              }).map(task => (
-                <TodoItem key={task._id} task={{ isActive: task.isActive, name: task.name }} handleTodoItemClick={() => this.handleTodoItemClick(task._id)} />
-              ))}
-              {/* {this.state.tasks.map(task => (
+                {this.state.tasks.filter((el) => {
+                  // console.log(this.state);
+                  if (this.state.filter === 'active') {
+                    return el.isActive === true;
+                  } else if (this.state.filter === 'done') {
+                    return el.isActive === false;
+                  } else {
+                    return el;
+                  }
+                }).map(task => (
+                  <TodoItem
+                    key={task._id}
+                    task={{ isActive: task.isActive, name: task.name }}
+                    handleTodoItemClick={() => this.handleTodoItemClick(task._id)}
+                    handleDeleteButtonClick={() => this.handleDeleteButton(task._id)}
+                  />
+                ))}
+                {/* {this.state.tasks.map(task => (
                 <TodoItem key={task._id} task={{ isActive: task.isActive, name: task.name }} handleTodoItemClick={() => this.handleTodoItemClick(task._id)} />
               ))} */}
               </Table.Body>

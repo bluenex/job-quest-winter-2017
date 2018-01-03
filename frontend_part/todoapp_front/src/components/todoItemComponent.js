@@ -1,6 +1,7 @@
 import React from 'react';
-import { Icon, List, TableRow, TableCell } from 'semantic-ui-react';
+import { Icon, Button, TableRow, TableCell } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
+import ConfirmDeletion from './confirmDeletionComponent';
 
 class TodoItem extends React.Component {
   render() {
@@ -23,6 +24,10 @@ class TodoItem extends React.Component {
           <Icon name={this.props.task.isActive ? 'square outline' : 'checkmark box'} />
           {this.props.task.name}
         </TableCell>
+        <TableCell>
+          <ConfirmDeletion handleDeletionClick={this.props.handleDeleteButtonClick} />
+          {/* <Button onClick={this.props.handleDeleteButtonClick} color='google plus' floated='right' icon='remove' /> */}
+        </TableCell>
       </TableRow>
 
     );
@@ -35,6 +40,7 @@ TodoItem.propTypes = {
     name: PropTypes.string.isRequired,
   }).isRequired,
   handleTodoItemClick: PropTypes.func.isRequired,
+  handleDeleteButtonClick: PropTypes.func.isRequired,
 };
 
 export default TodoItem;
