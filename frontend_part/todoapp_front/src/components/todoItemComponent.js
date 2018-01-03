@@ -1,5 +1,5 @@
 import React from 'react';
-import { Checkbox } from 'semantic-ui-react';
+import { Icon, List } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 
 class TodoItem extends React.Component {
@@ -7,7 +7,17 @@ class TodoItem extends React.Component {
     // console.log(this.props.task._id);
 
     return (
-      <Checkbox onChange={this.props.handleTodoItemClick} checked={this.props.task.isActive} label={this.props.task.name} />
+      <List.Item onClick={this.props.handleTodoItemClick}>
+        <Icon name={this.props.task.isActive ? 'checkmark' : 'remove'} />
+        <List.Content>
+          {/* <List.Header>no</List.Header> */}
+          <List.Description>
+            {/* <Checkbox  checked={this.props.task.isActive} label={this.props.task.name} /> */}
+            {this.props.task.name}
+          </List.Description>
+        </List.Content>
+      </List.Item>
+
     );
   }
 }

@@ -5,7 +5,7 @@ var taskSchema = mongoose.Schema({
     name: {
         type: String,
         required: true
-    }, 
+    },
     isActive: {
         type: Boolean,
         require: true
@@ -31,7 +31,9 @@ module.exports.updateTask = function(id, task, options, callback) {
         name: task.name,
         isActive: task.isActive
     }
-    Task.findOneAndUpdate(task, update, options, callback);
+    console.log('this is original', task);
+    console.log('this is updated', update);
+    Task.findOneAndUpdate(query, update, options, callback);
 }
 
 // remove a task
