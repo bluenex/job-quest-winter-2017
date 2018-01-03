@@ -1,9 +1,10 @@
 import React from 'react';
 import axios from 'axios';
-import { List, Grid, Header, Button } from 'semantic-ui-react';
+import { List, Grid, Header, Button, Table } from 'semantic-ui-react';
 
 import NewTodo from './newTodoComponent';
 import TodoItem from './todoItemComponent';
+import Tab from 'semantic-ui-react/dist/commonjs/modules/Tab/Tab';
 
 class TodoList extends React.Component {
   constructor(props) {
@@ -136,8 +137,10 @@ class TodoList extends React.Component {
             <NewTodo todoValue={this.state.newtodo.name} onChange={this.handleChange} onSubmit={this.handleSubmit} />
 
             {/* todo list */}
-            <List>
-              {/* normal function wont be able to see this.state, go arrow! */}
+
+            <Table singleLine>
+              <Table.Body>
+                {/* normal function wont be able to see this.state, go arrow! */}
               {this.state.tasks.filter((el) => {
                 // console.log(this.state);
                 if(this.state.filter === 'active') {
@@ -153,7 +156,8 @@ class TodoList extends React.Component {
               {/* {this.state.tasks.map(task => (
                 <TodoItem key={task._id} task={{ isActive: task.isActive, name: task.name }} handleTodoItemClick={() => this.handleTodoItemClick(task._id)} />
               ))} */}
-            </List>
+              </Table.Body>
+            </Table>
 
             {/* filter options */}
             <Button.Group onClick={this.handleFilterClick}>

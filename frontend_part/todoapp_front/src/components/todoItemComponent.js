@@ -1,5 +1,5 @@
 import React from 'react';
-import { Icon, List } from 'semantic-ui-react';
+import { Icon, List, TableRow, TableCell } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 
 class TodoItem extends React.Component {
@@ -7,16 +7,23 @@ class TodoItem extends React.Component {
     // console.log(this.props.task._id);
 
     return (
-      <List.Item onClick={this.props.handleTodoItemClick}>
-        <Icon name={this.props.task.isActive ? 'checkmark' : 'remove'} />
-        <List.Content>
-          {/* <List.Header>no</List.Header> */}
-          <List.Description>
-            {/* <Checkbox  checked={this.props.task.isActive} label={this.props.task.name} /> */}
-            {this.props.task.name}
-          </List.Description>
-        </List.Content>
-      </List.Item>
+      // <List.Item onClick={this.props.handleTodoItemClick}>
+      //   <Icon name={this.props.task.isActive ? 'checkmark' : 'remove'} />
+      //   <List.Content>
+      //     {/* <List.Header>no</List.Header> */}
+      //     <List.Description>
+      //       {/* <Checkbox  checked={this.props.task.isActive} label={this.props.task.name} /> */}
+      //       {this.props.task.name}
+      //     </List.Description>
+      //   </List.Content>
+      // </List.Item>
+
+      <TableRow>
+        <TableCell onClick={this.props.handleTodoItemClick}>
+          <Icon name={this.props.task.isActive ? 'square outline' : 'checkmark box'} />
+          {this.props.task.name}
+        </TableCell>
+      </TableRow>
 
     );
   }

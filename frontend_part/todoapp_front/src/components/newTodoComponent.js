@@ -8,8 +8,8 @@ class NewTodo extends React.Component {
 
     return (
       <Form onSubmit={this.props.onSubmit}>
-        <Form.Group widths="equal">
-          <Form.Input name="name" value={todoVal} onChange={this.props.onChange} placeholder="What to do?" />
+        <Form.Group>
+          <Form.Input width="16" name="name" value={todoVal} onChange={this.props.onChange} placeholder="What to do?" />
           <Form.Button content="+" />
         </Form.Group>
       </Form>
