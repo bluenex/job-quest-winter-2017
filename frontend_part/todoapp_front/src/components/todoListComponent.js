@@ -32,6 +32,19 @@ class TodoList extends React.Component {
     // ));
   }
 
+  handleTodoItemClick = (id) => {
+    console.log('handle click is called from:', id);
+    const updatedTasks = [...this.state.tasks];
+    for (let i=0; i<updatedTasks.length; i++) {
+      if (updatedTasks[i]._id == id) {
+        updatedTasks[i].isActive = !updatedTasks[i].isActive;
+      }
+    }
+
+    this.setState({ tasks: updatedTasks });
+    // this.setState({ tasks: { ...this.state.tasks, isActive: !this.state.newtodo.isActive } });
+  }
+
   handleChange = (e, { name, value }) => {
     this.setState({ newtodo: { [name]: value, isActive: true } });
     // console.log(this.state.newtodo);
@@ -46,8 +59,8 @@ class TodoList extends React.Component {
       headers: { 'Content-Type': 'application/json' }
     })
       .then(
-        this.fetchTasks(),
-        this.setState({ newtodo: { name: '', isActive: true }})
+      this.fetchTasks(),
+      this.setState({ newtodo: { name: '', isActive: true } })
       )
       .catch((err) => {
         console.log(err);
@@ -56,10 +69,10 @@ class TodoList extends React.Component {
 
   render() {
     // set this to class member
-    const test = this.state.tasks.map(task => (
-      // <li key={task._id}><Checkbox checked={task.isActive} label={task.name} /></li>
-      <TodoItem task={task} />
-    ));
+    // const test = this.state.tasks.map(task => (
+    //   // <li key={task._id}><Checkbox checked={task.isActive} label={task.name} /></li>
+    //   <TodoItem task={task} />
+    // ));
 
     return (
       <div className="todoList">
@@ -88,7 +101,11 @@ class TodoList extends React.Component {
             {/* text area to add new todo */}
             <NewTodo todoValue={this.state.newtodo.name} onChange={this.handleChange} onSubmit={this.handleSubmit} />
             <ul>
-              {test}
+              {this.state.tasks.map(task => (
+                <li key={task._id}>
+                  <TodoItem task={{ isActive: task.isActive, name: task.name }} handleTodoItemClick={() => this.handleTodoItemClick(task._id)} />
+                </li>
+              ))}
             </ul>
           </Grid.Column>
 
