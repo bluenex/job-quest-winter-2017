@@ -1,10 +1,11 @@
 import React from 'react';
 import axios from 'axios';
-import { List, Grid, Header, Button, Table } from 'semantic-ui-react';
+import { Grid, Header, Table } from 'semantic-ui-react';
 
 import NewTodo from './newTodoComponent';
 import TodoItem from './todoItemComponent';
-import Tab from 'semantic-ui-react/dist/commonjs/modules/Tab/Tab';
+import FilterButtons from './filterButtonComponent';
+// import Tab from 'semantic-ui-react/dist/commonjs/modules/Tab/Tab';
 
 class TodoList extends React.Component {
   constructor(props) {
@@ -67,7 +68,7 @@ class TodoList extends React.Component {
 
   handleFilterClick = (e) => {
     // get button key
-    console.log(e.target.attributes.getNamedItem('data-key').value);
+    // console.log(e.target.attributes.getNamedItem('data-key').value);
     const newFilterVal = e.target.attributes.getNamedItem('data-key').value;
 
     this.setState({ filter: newFilterVal });
@@ -187,11 +188,9 @@ class TodoList extends React.Component {
             </Table>
 
             {/* filter options */}
-            <Button.Group onClick={this.handleFilterClick}>
-              <Button data-key='all'>All</Button>
-              <Button data-key='active'>Active</Button>
-              <Button data-key='done'>Done</Button>
-            </Button.Group>
+            <FilterButtons
+              onClick={this.handleFilterClick}
+            />
           </Grid.Column>
 
         </Grid>

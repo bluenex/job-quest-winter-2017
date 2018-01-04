@@ -1,5 +1,7 @@
 # TODO App
 
+![todogif](./imgs/todogif.gif)
+
 This is a note to myself on how to run these components. 
 
 ### Requirements

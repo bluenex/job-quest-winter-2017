@@ -1,5 +1,5 @@
 import React from 'react';
-import { Icon, Button, TableRow, TableCell } from 'semantic-ui-react';
+import { Icon, TableRow, TableCell } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import ConfirmDeletion from './confirmDeletionComponent';
 

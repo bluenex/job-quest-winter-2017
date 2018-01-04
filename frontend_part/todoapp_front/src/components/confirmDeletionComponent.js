@@ -31,11 +31,15 @@ class ConfirmDeletion extends React.Component {
           floated='right'
           icon='remove'
           onClick={this.show}
+          size='mini'
         />
         <Confirm className="conf"
           open={this.state.open}
           onCancel={this.handleCancel}
           onConfirm={this.handleConfirm}
+          content="Are you sure to remove this task?"
+          confirmButton="Yes, please"
+          cancelButton="No"
         />
       </div>
     )
