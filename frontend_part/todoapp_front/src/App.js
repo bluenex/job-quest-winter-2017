@@ -6,7 +6,7 @@ import './App.css';
 
 // import Fetcher from './components/fetcherComponent';
 // import Todo from './components/todoComponent';
-import TodoList from './components/todoListComponent';
+import { TodoList } from './components/todoListComponent';
 
 class App extends Component {
   render() {
