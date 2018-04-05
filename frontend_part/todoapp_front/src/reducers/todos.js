@@ -6,14 +6,24 @@ const todos = (state = [], action) => {
         {
           id: action.id,
           text: action.text,
-          active: true,
+          done: false,
         },
       ];
 
+    case 'DELETE_TODO':
+      return [
+        ...state.item.slice(0, action.id),
+        ...state.item.slice(action.id + 1),
+      ];
+
     case 'TOGGLE_TODO':
-      return state.map(todo => (
-        (todo.id === action.id) ? { ...todo, active: !todo.active } : todo
-      ));
+      return state.map((todo) => {
+        if (todo.id === action.id) {
+          return { ...todo, done: !todo.done };
+        }
+
+        return todo;
+      });
 
     default:
       return state;

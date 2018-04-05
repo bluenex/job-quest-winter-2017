@@ -5,7 +5,6 @@ import { Grid, Header, Table } from 'semantic-ui-react';
 import NewTodo from './newTodoComponent';
 import TodoItem from './todoItemComponent';
 import FilterButtons from './filterButtonComponent';
-// import Tab from 'semantic-ui-react/dist/commonjs/modules/Tab/Tab';
 
 class TodoList extends React.Component {
   constructor(props) {
@@ -18,45 +17,40 @@ class TodoList extends React.Component {
     // this.taskList = '';
   }
 
-  componentDidMount() {
-    this.fetchTasks();
-  }
+  // componentDidMount() {
+  //   this.fetchTasks();
+  // }
 
-  fetchTasks() {
-    axios.get('/api/tasks')
-      .then((res) => {
-        this.setState({
-          tasks: res.data,
-        });
-      }).catch((err) => {
-        console.log(err);
-      });
+  // fetchTasks() {
+  //   axios.get('/api/tasks')
+  //     .then((res) => {
+  //       this.setState({
+  //         tasks: res.data,
+  //       });
+  //     }).catch((err) => {
+  //       console.log(err);
+  //     });
+  // }
 
-    // // set this to class member
-    // const test = this.state.tasks.map(task => (
-    //   <li key={task._id}><Checkbox checked={task.isActive} label={task.name} /></li>
-    // ));
-  }
+  // handleTodoItemClick = (id) => {
+  //   // log id of being clicked element
+  //   // console.log('handle click is called from:', id);
+  //   // filter element by id
+  //   const updatedTasks = [...this.state.tasks].find(function (el) {
+  //     return el._id === id
+  //   });
 
-  handleTodoItemClick = (id) => {
-    // log id of being clicked element
-    // console.log('handle click is called from:', id);
-    // filter element by id
-    const updatedTasks = [...this.state.tasks].find(function (el) {
-      return el._id === id
-    });
+  //   // change status when clicked
+  //   updatedTasks.isActive = !updatedTasks.isActive;
 
-    // change status when clicked
-    updatedTasks.isActive = !updatedTasks.isActive;
+  //   // send update req
+  //   this.updateExistingTask(id, updatedTasks);
+  // }
 
-    // send update req
-    this.updateExistingTask(id, updatedTasks);
-  }
-
-  handleChange = (e, { name, value }) => {
-    this.setState({ newtodo: { [name]: value, isActive: true } });
-    // console.log(this.state.newtodo);
-  }
+  // handleChange = (e, { name, value }) => {
+  //   this.setState({ newtodo: { [name]: value, isActive: true } });
+  //   // console.log(this.state.newtodo);
+  // }
 
   handleSubmit = () => {
     const newTodo = this.state.newtodo;
@@ -119,12 +113,6 @@ class TodoList extends React.Component {
   }
 
   render() {
-    // set this to class member
-    // const test = this.state.tasks.map(task => (
-    //   // <li key={task._id}><Checkbox checked={task.isActive} label={task.name} /></li>
-    //   <TodoItem task={task} />
-    // ));
-
     return (
       <div className="todoList">
         <style>{`
