@@ -3,11 +3,11 @@ import { setVisibleFilter } from '../actions';
 import BaseButton from '../components/BaseButton';
 
 const mapStateToProps = (state, ownProps) => ({
-  active: ownProps.filter === state.filter,
+  active: ownProps.filter === state.visibleFilter,
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-  onClick: () => {
+  onToggleFilter: () => {
     dispatch(setVisibleFilter(ownProps.filter));
   },
 });

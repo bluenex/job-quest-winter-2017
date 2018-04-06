@@ -2,8 +2,8 @@ import React from 'react';
 import { Button } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 
-const BaseButton = ({ active, children, onClick }) => (
-  <Button onClick={onClick} toggle active={!active}>
+const BaseButton = ({ active, children, onToggleFilter }) => (
+  <Button onClick={onToggleFilter} toggle active={active}>
     {children}
   </Button>
 );
@@ -11,7 +11,7 @@ const BaseButton = ({ active, children, onClick }) => (
 BaseButton.propTypes = {
   active: PropTypes.bool.isRequired,
   children: PropTypes.node.isRequired,
-  onClick: PropTypes.func.isRequired,
+  onToggleFilter: PropTypes.func.isRequired,
 };
 
 export default BaseButton;

@@ -12,7 +12,7 @@ export const deleteTodo = id => ({
 });
 
 export const setVisibleFilter = filter => ({
-  type: 'SET_VISIBILITY_FILTER',
+  type: 'SET_VISIBLE_FILTER',
   filter,
 });
 

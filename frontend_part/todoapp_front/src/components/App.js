@@ -2,7 +2,7 @@ import React from 'react';
 import { Grid, Header } from 'semantic-ui-react';
 import NewTodo from '../containers/NewTodo';
 import FilteredTodoList from '../containers/FilteredTodoList';
-import FilterButtons from './FilterButtons';
+import FilterButtonsGroup from './FilterButtonsGroup';
 
 const App = () => (
   <div className="todoList">
@@ -41,7 +41,7 @@ const App = () => (
         <FilteredTodoList />
 
         {/* filter options */}
-        <FilterButtons />
+        <FilterButtonsGroup />
       </Grid.Column>
     </Grid>
   </div>
