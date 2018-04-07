@@ -6,9 +6,19 @@ export const addTodo = text => ({
   text,
 });
 
+export const toggleTodo = id => ({
+  type: 'TOGGLE_TODO',
+  id,
+});
+
 export const deleteTodo = id => ({
   type: 'DELETE_TODO',
   id,
+});
+
+export const setVisibleConfirmDeletion = openConfirm => ({
+  type: 'SET_VISIBLE_CONFIRM',
+  openConfirm,
 });
 
 export const setVisibleFilter = filter => ({
@@ -16,13 +26,13 @@ export const setVisibleFilter = filter => ({
   filter,
 });
 
-export const toggleTodo = id => ({
-  type: 'TOGGLE_TODO',
-  id,
-});
-
 export const VisibleFilters = {
   SHOW_ALL: 'SHOW_ALL',
   SHOW_COMPLETED: 'SHOW_COMPLETED',
   SHOW_ACTIVE: 'SHOW_ACTIVE',
+};
+
+export const VisibleConfirmDeletion = {
+  HIDE: false,
+  SHOW: true,
 };
