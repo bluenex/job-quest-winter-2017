@@ -1,7 +1,7 @@
 const visibleConfirmDeletion = (state = false, action) => {
   switch (action.type) {
     case 'SET_VISIBLE_CONFIRM':
-      return !action.openConfirm;
+      return !state;
     default:
       return state;
   }

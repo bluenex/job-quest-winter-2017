@@ -2,22 +2,26 @@ import { connect } from 'react-redux';
 import { setVisibleConfirmDeletion, deleteTodo } from '../actions';
 import BaseDeleteButton from '../components/BaseDeleteButton';
 
-const mapStateToProps = (state) => {
-  // console.log(state);
+const mapStateToProps = (state, ownProps) => {
+  console.log('here it is!', state.todos[ownProps.todoId].text);
 
   return ({
     showConfirm: state.visibleConfirmDeletion,
+    todoId: ownProps.todoId,
+    text: state.todos[ownProps.todoId].text,
   });
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => {
-  console.log(ownProps);
-
   return ({
     onClickDeleteTodo: () => {
-      dispatch(setVisibleConfirmDeletion(ownProps.showConfirm));
+      dispatch(setVisibleConfirmDeletion());
     },
-    onConfirmDelete: deleteTodo,
+    onConfirmDelete: () => {
+      dispatch(deleteTodo(ownProps.todoId));
+      // hide popup
+      dispatch(setVisibleConfirmDeletion());
+    },
   });
 };
 

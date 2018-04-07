@@ -12,8 +12,8 @@ const todos = (state = [], action) => {
 
     case 'DELETE_TODO':
       return [
-        ...state.item.slice(0, action.id),
-        ...state.item.slice(action.id + 1),
+        ...state.slice(0, action.id),
+        ...state.slice(action.id + 1),
       ];
 
     case 'TOGGLE_TODO':

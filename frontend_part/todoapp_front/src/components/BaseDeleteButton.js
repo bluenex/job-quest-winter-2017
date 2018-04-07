@@ -2,7 +2,9 @@ import React from 'react';
 import { Button, Confirm } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 
-const BaseDeleteButton = ({ onClickDeleteTodo, showConfirm, onConfirmDelete }) => (
+const BaseDeleteButton = ({
+  onClickDeleteTodo, showConfirm, onConfirmDelete, text,
+}) => (
   <div>
     <Button
       color="google plus"
@@ -16,7 +18,7 @@ const BaseDeleteButton = ({ onClickDeleteTodo, showConfirm, onConfirmDelete }) =
       open={showConfirm}
       onCancel={onClickDeleteTodo}
       onConfirm={onConfirmDelete}
-      content="Are you sure to remove this task?"
+      content={`Are you sure to remove "${text}"?`}
       confirmButton="Yes, please"
       cancelButton="No"
     />
@@ -27,6 +29,7 @@ BaseDeleteButton.propTypes = {
   onClickDeleteTodo: PropTypes.func.isRequired,
   showConfirm: PropTypes.bool.isRequired,
   onConfirmDelete: PropTypes.func.isRequired,
+  text: PropTypes.string.isRequired,
 };
 
 export default BaseDeleteButton;
