@@ -1,7 +1,16 @@
-const visibleConfirmDeletion = (state = false, action) => {
+const visibleConfirmDeletion = (state =
+  {
+    visibleConfirm: false,
+    idToDelete: 0,
+    textToDelete: '',
+  }, action) => {
   switch (action.type) {
     case 'SET_VISIBLE_CONFIRM':
-      return !state;
+      return {
+        visibleConfirm: !state.visibleConfirm,
+        idToDelete: action.idToDelete,
+        textToDelete: action.textToDelete,
+      };
     default:
       return state;
   }

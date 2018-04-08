@@ -16,8 +16,10 @@ export const deleteTodo = id => ({
   id,
 });
 
-export const setVisibleConfirmDeletion = () => ({
+export const setVisibleConfirmDeletion = (idToDelete, textToDelete) => ({
   type: 'SET_VISIBLE_CONFIRM',
+  idToDelete,
+  textToDelete,
 });
 
 export const setVisibleFilter = filter => ({

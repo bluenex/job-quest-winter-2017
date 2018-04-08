@@ -3,6 +3,7 @@ import { Grid, Header } from 'semantic-ui-react';
 import NewTodo from '../containers/NewTodo';
 import FilteredTodoList from '../containers/FilteredTodoList';
 import FilterButtonsGroup from './FilterButtonsGroup';
+import ConfirmDeletion from '../containers/ConfirmDeletion';
 
 const App = () => (
   <div className="todoList">
@@ -36,6 +37,9 @@ const App = () => (
 
         {/* text area to add new todo */}
         <NewTodo />
+
+        {/* confirmation popup */}
+        <ConfirmDeletion />
 
         {/* todo list */}
         <FilteredTodoList />

@@ -4,7 +4,7 @@ import { Table } from 'semantic-ui-react';
 import TodoItem from './TodoItem';
 
 
-const TodoList = ({ allTodos, onTodoClick }) => (
+const TodoList = ({ allTodos, onTodoClick, onClickDeleteTodo }) => (
   <Table singleLine>
     <Table.Body>
       {allTodos.map(todo => (
@@ -12,6 +12,7 @@ const TodoList = ({ allTodos, onTodoClick }) => (
           key={todo.id}
           {...todo}
           onClickToggle={() => onTodoClick(todo.id)}
+          onClickDeleteTodo={() => onClickDeleteTodo(todo.id, todo.text)}
         />
       ))}
     </Table.Body>
@@ -25,6 +26,7 @@ TodoList.propTypes = {
     text: PropTypes.string.isRequired,
   }).isRequired).isRequired,
   onTodoClick: PropTypes.func.isRequired,
+  onClickDeleteTodo: PropTypes.func.isRequired,
 };
 
 export default TodoList;
