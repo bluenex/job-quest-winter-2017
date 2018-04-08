@@ -32,8 +32,3 @@ export const VisibleFilters = {
   SHOW_COMPLETED: 'SHOW_COMPLETED',
   SHOW_ACTIVE: 'SHOW_ACTIVE',
 };
-
-export const VisibleConfirmDeletion = {
-  HIDE: false,
-  SHOW: true,
-};

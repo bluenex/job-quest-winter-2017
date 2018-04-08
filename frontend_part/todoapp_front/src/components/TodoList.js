@@ -2,11 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Table } from 'semantic-ui-react';
 import TodoItem from './TodoItem';
+import ConfirmDeletion from '../containers/ConfirmDeletion';
 
 
-const TodoList = ({ allTodos, onTodoClick, onClickDeleteTodo }) => (
+const TodoList = ({
+  allTodos, onTodoClick, onClickDeleteTodo, idToDelete,
+}) => (
   <Table singleLine>
     <Table.Body>
+      {/* all todo items here */}
       {allTodos.map(todo => (
         <TodoItem
           key={todo.id}
@@ -15,6 +19,9 @@ const TodoList = ({ allTodos, onTodoClick, onClickDeleteTodo }) => (
           onClickDeleteTodo={() => onClickDeleteTodo(todo.id, todo.text)}
         />
       ))}
+
+      {/* with a single confirmation popup */}
+      <ConfirmDeletion idToDelete={idToDelete} />
     </Table.Body>
   </Table>
 );
@@ -27,6 +34,7 @@ TodoList.propTypes = {
   }).isRequired).isRequired,
   onTodoClick: PropTypes.func.isRequired,
   onClickDeleteTodo: PropTypes.func.isRequired,
+  idToDelete: PropTypes.number.isRequired,
 };
 
 export default TodoList;

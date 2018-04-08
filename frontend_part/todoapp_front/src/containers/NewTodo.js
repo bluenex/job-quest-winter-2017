@@ -1,5 +1,5 @@
 import React from 'react';
-import { Form } from 'semantic-ui-react';
+import { Form, Button } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import { addTodo } from '../actions';
 
@@ -18,14 +18,16 @@ let NewTodo = ({ dispatch }) => { // eslint-disable-line import/no-mutable-expor
       input.value = '';
     }}
     >
+
       <Form.Group>
         <input
           placeholder="What to do?"
           ref={(node) => {
             input = node;
           }}
+          style={{ borderTopRightRadius: '0', borderBottomRightRadius: '0' }}
         />
-        <Form.Button content="+" />
+        <Button type="submit" style={{ marginRight: '0', borderTopLeftRadius: '0', borderBottomLeftRadius: '0' }}>+</Button>
       </Form.Group>
     </Form>
   );

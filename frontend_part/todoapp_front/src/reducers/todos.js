@@ -11,10 +11,9 @@ const todos = (state = [], action) => {
       ];
 
     case 'DELETE_TODO':
-      return [
-        ...state.slice(0, action.id),
-        ...state.slice(action.id + 1),
-      ];
+      // remove deleted index here!
+      state.splice(state.findIndex(x => x.id === action.id), 1);
+      return state;
 
     case 'TOGGLE_TODO':
       return state.map((todo) => {

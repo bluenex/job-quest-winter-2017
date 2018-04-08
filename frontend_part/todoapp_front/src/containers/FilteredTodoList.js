@@ -18,6 +18,7 @@ const getVisibleTodos = (allTodos, visibleFilter) => {
 const mapStateToProps = state => (
   {
     allTodos: getVisibleTodos(state.todos, state.visibleFilter),
+    idToDelete: state.visibleConfirmDeletion.idToDelete,
   }
 );
 

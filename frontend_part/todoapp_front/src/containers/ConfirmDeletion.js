@@ -9,12 +9,13 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
   onCancel: () => {
-    dispatch(setVisibleConfirmDeletion(0, ''));
+    // dispatch dummy index -1 to just close the popup
+    dispatch(setVisibleConfirmDeletion(-1, ''));
   },
   onConfirmDelete: () => {
-    dispatch(deleteTodo(ownProps.todoId));
+    dispatch(deleteTodo(ownProps.idToDelete));
     // hide popup
-    dispatch(setVisibleConfirmDeletion(0, ''));
+    dispatch(setVisibleConfirmDeletion(-1, ''));
   },
 });
 
